@@ -1,3 +1,18 @@
+/*
+0 - 600px :     Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800[ is where our normal styles apply
+1800px + :      Big desktop
+
+$breackpoint argument choices
+- phone
+-tab-pot
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > componets
+*/
 *,
 *::after,
 *::before {
@@ -7,9 +22,22 @@
 
 html {
   font-size: 62.5%; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding: 3rem; }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 @keyframes moveInLeft {
   0% {
@@ -43,12 +71,12 @@ body {
   font-family: "Lato", "sans-serif";
   font-weight: 400;
   line-height: 1.7;
-  color: #777;
-  padding: 3rem; }
+  color: #777; }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+  backface-visibility: hidden;
   margin-bottom: 6rem; }
   .heading-primary--main {
     display: block;
@@ -58,14 +86,21 @@ body {
     animation-name: moveInLeft;
     animation-duration: 2s;
     animation-timing-function: ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1rem;
+        font-size: 5rem; } }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
-    font-weight: 400;
+    font-weight: 700;
     letter-spacing: 1.75rem;
     animation-name: moveInRight;
     animation-duration: 2s;
     animation-timing-function: ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: .5rem; } }
 
 .heading-secundary {
   font-size: 3.5rem;
@@ -78,6 +113,12 @@ body {
   color: transparent;
   letter-spacing: .2rem;
   transition: all .2s; }
+  @media (max-width: 56.25em) {
+    .heading-secundary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secundary {
+      font-size: 2.5rem; } }
   .heading-secundary:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
@@ -131,7 +172,6 @@ body {
     text-align: center; }
 
 .row {
-  width: 114rem;
   margin: 0 auto;
   margin-bottom: 8rem; }
   .row:last-child {
@@ -380,10 +420,10 @@ body {
 .composition {
   position: relative; }
   .composition__photo {
+    position: absolute;
     width: 55%;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
     border-radius: 2px;
-    position: absolute;
     transition: all .2s;
     outline-offset: 2rem; }
     .composition__photo--p1 {
