@@ -9,6 +9,23 @@
 html {
   //This defines what 1rem is
   font-size: 62.5%;
+
+  @include respond(phone){
+    
+  }
+
+  @include respond(tab-port){
+
+  }
+
+  @include respond(tab-land){
+
+  }
+
+  @include respond(big-desktop){
+
+  }
+
 }
 
 body {
